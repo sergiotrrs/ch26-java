@@ -149,6 +149,70 @@ public class Variables {
 	   String myVarString = "Holi \"Crayoli\"";
 	   System.out.println("Mensaje string: " + myVarString);
 	   
+	// Convertir de string a números
+	   byte edadMascota = Byte.parseByte("10");
+	   double edadPlaneta = Double.parseDouble("456.8956");
+	   System.out.println( edadMascota + " , " + edadPlaneta);
+	// Convertir números a String
+	   String edadString = String.valueOf( 4568 );
+	// Obteniendo la longitud de un String   
+	   System.out.println("El número de dígitos en edadString = " + edadString.length());
+	// Obteniendo el primer caracter de un String.
+	   System.out.println("El segundo caracter de "+ edadString + " es : " + edadString.charAt(1));
+	   
+	// -------------------------------------------------------------------------------
+	// Operadores numéricos.
+	   int opA = (int)5.2;
+	   int opB = 6;
+	   int suma = opA + opB;
+	   int resta = opA - opB;
+	   int multiplica = (int)( opA * opB * 1.01);
+	   double multiplicaDouble = opA * opB * 1.01;
+	   int division = opA / opB;
+	   double divisionDouble = 1.0 * opA / opB;
+	   int residuo = opA % 2;
+	   
+	   System.out.println(suma);
+	   System.out.println(resta);
+	   System.out.println(multiplica);
+	   System.out.println(multiplicaDouble);
+	   System.out.println( (0.1 *1000 + 0.2* 1000)/1000 );
+	   System.out.println(division);
+	   System.out.println(divisionDouble);
+	   System.out.println("Residuo de 5%2 = " + residuo );
+	   
+	   int valorInicial = 10;
+	   System.out.println("Preincremento " + ++valorInicial ); // 11
+	   System.out.println("Postincremento " + valorInicial++ ); // 11 
+	   System.out.println("Valor final " + valorInicial ); // 12
+	   valorInicial = 33;
+	   System.out.println("Predecremento " + --valorInicial ); // 32 
+	   System.out.println("Postdecremento " + valorInicial-- ); // 32
+	   System.out.println("Valor final " + valorInicial ); //31
+	   
+	   // Operaciones con valores enteros
+	   byte edadGato = 10;
+	   short dobleDeEdad = (short)(edadGato * 2); 
+	
+	   // Operadores comparativos
+	   // El resultado es boolean
+	   // <, <=, >, >=, ==, !=
+	   int numEmpleados = 1000;
+	   System.out.println("Empleados > 1000 " + ( numEmpleados > 1000  ) );
+	   System.out.println("Empleados >= 1000 " + ( numEmpleados >= 1000  ) );
+	   System.out.println("Empleados == 1000 " + ( numEmpleados == 1000  ) );
+	   System.out.println("Empleados != 1000 " + ( numEmpleados != 1000  ) );
+	   
+	   // Operadores lógicos
+	   // && (AND) retorna true si ambos operadores son true
+	   // || (OR) retorna true si cualquiera de los operandos es true
+	   // !  (NOT) invierte el resultado booleano
+	   
+	   System.out.println("Empleados > 0 && Empleados < 2000 " +
+			           (numEmpleados > 0 && numEmpleados < 2000 ) );
+	  // System.out.println("Empleados > 0 && Empleados < 2000 " +
+	  //         ( 2000 > numEmpleados > 0 ) ); No se puede comparar un booleano vs numérico
+	   
 	}
 	
 }
