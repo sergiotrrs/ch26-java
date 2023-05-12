@@ -216,7 +216,7 @@ public class Variables {
 	   boolean a = true;
 	   boolean b = false;
 	   boolean c = true;
-	   System.out.println( (a && b) || (a&& c) ); // true
+	   System.out.println( (a && b) || (a && c) ); // true
 	   System.out.println( a || b || c && a ); // true
 	   System.out.println( !(a || b) && (!a || c) ); // false	   	  
 	   System.out.println( a || b && c || a && b  ); // true
