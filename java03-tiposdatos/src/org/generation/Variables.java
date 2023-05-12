@@ -117,10 +117,38 @@ public class Variables {
 	   char letraM = 77; // M
 	   System.out.println("La letra M: " + letraM);
 		
+	// ------------------------------------------------------------   
 	// Formas de representar un número
+	// Representación decimal
+	   System.out.println("Representación decima: " +  26);
+	   System.out.println("Representación hexadecimal: " + 0x1a);
+	   System.out.println("Representación binaria: " + 0b11010 );
+	// Para las literales numéricas se puede usar el guión bajo _ para separa números
+	// No se puede escribir _ al inicio o final de la literal
+	// No se puede escribir _ junto a un punto decimal
+	// No se puede escribir _ antes de la F o L
+	   int numeroSeparados = 12_345;
+	   float numerosFlotalSeparados = 12_345.456_346F;
+	  
+	// --------------------------------------------------------------------------------
+	// Conversión de tipos de datos
+	   byte coquita600ml = 60;
+	   // upcasting
+	   short coquita2000ml = coquita600ml;
+	   // downcasting
+	   short pozoleGrande1L = 259;
+	   byte pozoleBurbuja = (byte) pozoleGrande1L;
+	   System.out.println("Pozole burbuja: " + pozoleBurbuja);
+	 
+	// -------------------------------------------------------------------------------
+	// Objetos de tipo String.
+	// Se definen entre comillas dobles.
+	// Si deseas imprimir comillas dobles en el mensaje, se usa el caracter de escape \
+	// \b (backspace), \t (tab), \n (line feed), \f (form feed), \r (carriage return),
+	// \" (double quote), \' (single quote), and \\ (backslash).
+	   String myVarString = "Holi \"Crayoli\"";
+	   System.out.println("Mensaje string: " + myVarString);
 	   
-		
 	}
 	
-
 }
