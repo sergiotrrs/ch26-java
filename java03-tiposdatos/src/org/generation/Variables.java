@@ -213,6 +213,17 @@ public class Variables {
 	  // System.out.println("Empleados > 0 && Empleados < 2000 " +
 	  //         ( 2000 > numEmpleados > 0 ) ); No se puede comparar un booleano vs numérico
 	   
+	   boolean a = true;
+	   boolean b = false;
+	   boolean c = true;
+	   System.out.println( (a && b) || (a&& c) ); // true
+	   System.out.println( a || b || c && a ); // true
+	   System.out.println( !(a || b) && (!a || c) ); // false	   	  
+	   System.out.println( a || b && c || a && b  ); // true
+	   
+	   //---------------------------------------------------------------
+	   //int divicionPorCero = 45 / 0; En Java ocurre una excepción al realiza / cero
+	   
 	}
 	
 }
