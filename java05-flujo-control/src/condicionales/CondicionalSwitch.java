@@ -70,7 +70,6 @@ public class CondicionalSwitch {
 			// 9, 10, 11 : otoño
 			String estacion;
 			switch (mesTxt.toLowerCase()) {
-			// ToDo dic, enero, feb = Invierto
 			case "diciembre":
 			case "enero":
 			case "febrero":
