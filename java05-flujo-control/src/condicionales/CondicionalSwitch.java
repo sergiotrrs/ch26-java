@@ -32,8 +32,9 @@ public class CondicionalSwitch {
 		System.out.println("***** Mes de nacimiento ******");
 		System.out.print("Introduce el mes de nacimiento (1-12) :");
 		 if( sc.hasNextInt()) {
-			 String mesTxt = "";
+			 String mesTxt;
 			 int mesNacimiento = sc.nextInt();
+			 sc.nextLine();
 			 // Switch para encontrar el mes
 			 switch(mesNacimiento) {
 			 case 1 :
@@ -54,7 +55,10 @@ public class CondicionalSwitch {
 			 case 6 :
 				 mesTxt = "Junio";
 				 break;
-				 //TODO agregar los meses 4-11
+			 case 7, 8, 9, 10, 11 :
+				 mesTxt = "Falta incluir el mes";
+			 	 break;
+				 //TODO agregar los meses 7-11
 			 case 12 :
 				 mesTxt = "Diciembre";
 				 break;
@@ -63,6 +67,14 @@ public class CondicionalSwitch {
 			 }
 			 
 			System.out.println("Naciste en el mes de " + mesTxt);
+			
+			// La estación correspondiente al mes de nacimiento.
+			// ej: La estación es invierno.
+			// 12, 1, 2 : invierno
+			// 3, 4, 5 : primavera
+			// 6, 7, 8 : verano
+			// 9, 10, 11 : otoño
+			
 	
 		 }
 		
