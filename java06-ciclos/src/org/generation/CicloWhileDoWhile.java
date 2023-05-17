@@ -35,14 +35,15 @@ public class CicloWhileDoWhile {
 			System.out.println("Bienvenida Patito");
 			System.out.println("Quieres seguir activa (s/n)?");
 			char response = sc.nextLine().toLowerCase().charAt(0);
-			if( response != 's' ) active = false; // break;			
+			if( response == 's' ) active = true;				
+			else active = false; // break;
 		}while (active);
 		
 		
 		System.out.println("Gracias por tu visita");
 		
-		
-		
+		//while( sc.nextLine().toLowerCase().charAt(0) == 's' );		
+		//System.out.println("Adiós");
 		
 		
 		sc.close();
