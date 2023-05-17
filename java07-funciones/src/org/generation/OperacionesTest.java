@@ -21,6 +21,14 @@ public class OperacionesTest {
 		System.out.println( operaciones.suma( 3,  3, false));
 		System.out.println( operaciones.suma( 3,  3));
 
+		System.out.println( operaciones.squareRoot(15.0));
+		System.out.println( operaciones.squareRoot(15));
+		
+		// Usar método estático
+		// System.out.println( operaciones.valorPi() );
+		System.out.println( OperacionesMath.valorPi() );
+		System.out.println( OperacionesMath.piPorNumero(3) );
+		
 	}
 
 }
