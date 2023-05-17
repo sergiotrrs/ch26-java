@@ -13,6 +13,39 @@ public class OperacionesMath {
 		return a + b ;		
 	}
 	
+	double sumaFlotantes (double a, double b) {
+		return a + b;
+	}
+	
+	// Sobrecarga de métodos ( overload)
+	// funciones con el mismo nombre pero con diferentes parámetros
+	int suma(int a, int b) {
+		return a + b;			
+	}
+	
+	int suma(short a, short b ) {
+		return a + b;
+	}
+	
+	double suma( double dataA, double dataB) {
+		return dataA + dataB;
+	}
+	
+	double suma( double dataA, double dataB, boolean redondear) {
+		if (redondear)
+			return  Math.round( dataA + dataB);
+		return dataA + dataB;
+	}
+		
+		
+		
+	
+	
+
+	// esto no es posible, se repite los parámetros.
+	//float suma( double dataA, double dataB) {
+	//	return float(a + b);
+	//}
 	
 
 }

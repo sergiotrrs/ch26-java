@@ -15,6 +15,11 @@ public class OperacionesTest {
 		System.out.println( resultadoSuma );
 		System.out.println( operaciones.sumaEnteros(4, 5) ); //9
 		
+		System.out.println( operaciones.sumaFlotantes(4.5, 5.5));
+		System.out.println( operaciones.sumaFlotantes(4.01, 5.02));
+		
+		System.out.println( operaciones.suma( 3,  3, false));
+		System.out.println( operaciones.suma( 3,  3));
 
 	}
 
