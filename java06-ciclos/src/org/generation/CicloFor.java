@@ -57,13 +57,17 @@ public class CicloFor {
 		// Imprimir los números impares del 1 al 20 (incluyendo)
 		// 1
 		// 3
-		// 5
-		// 7
+		for (int i = 0; i <= 20 ; i++) {
+			if ( i % 2 == 0) continue;
+			System.out.printf("El %02d es impar %n", i );			
+		}
 		
-		
-		
-		
-		
+		// ------- qué sucede?		
+		boolean bandera = false;		
+		if ( bandera = true) // ( bandera )
+			System.out.println("Banderita, banderita, banderita tricolor");
+				
+					
 	}
 
 }
