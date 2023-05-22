@@ -11,6 +11,7 @@ public class PokemonTest {
 		Pokemon vamoACalmarnos = new Pokemon("Pikachu de agua", 50, 9);	
 		
 		System.out.println(pikachu.nombre);
+		System.out.println(pikachu.nacimiento);
 		System.out.println(vamoACalmarnos.nombre);
 
 	}
