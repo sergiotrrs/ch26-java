@@ -6,9 +6,11 @@ public class ATM {
 	double balance; // 0.0
 	
 	// atributos de clase (static fields)
-	static String bankName;
+	static String bankName = "BBVA"; // 01-Inicialización 
+	static int counterATM;
 	
 	// bloque de inicialización de atributos de instancia
+	// Se ejecuta cuando se crea la instancia.
 	{
 		serialNumber= "---";
 		balance = 100_000.00;
@@ -16,7 +18,13 @@ public class ATM {
 	
 	// bloque de inicialización de atributos de clase
 	static {
-		bankName = "Santander S.A de C.V.";
+		bankName = "Santander S.A de C.V."; // 02-Inicialización 
+		counterATM = 1;
+	}
+	
+	ATM(double balance){
+		this.balance = balance;
+		this.serialNumber =  Integer.toString(counterATM ++);
 	}
 	
 	// constructores
@@ -35,5 +43,7 @@ public class ATM {
 	static String getBankName() {
 		return "Bank: " + bankName;
 	}
+	
+
 
 }
