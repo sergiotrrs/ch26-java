@@ -53,5 +53,18 @@ public class Atm {
 			return 0;
 		}			
 	}
+	
+	public String displayInfo() {
+		//return "Serial number: " + this.serialNumber 
+		//		+ ", Amount: $"  + this.balance;
+		StringBuilder strBuilder = new StringBuilder();
+		strBuilder.append("Serial number: ");
+		strBuilder.append(this.serialNumber);
+		strBuilder.append(", Amount: $");
+		strBuilder.append(this.balance);
+		
+		return strBuilder.toString();
+		
+	}
 		
 }
