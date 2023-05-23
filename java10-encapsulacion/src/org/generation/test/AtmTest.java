@@ -13,7 +13,10 @@ public class AtmTest {
 		
 		cajeroA.deposit(4_000);		
 		System.out.println( cajeroA.displayInfo() );
-		// Método para retirar una cantidad: $2500.
+		cajeroA.withdraw(2_500);
+		System.out.println( cajeroA.displayInfo() );
+		cajeroA.withdraw(20_000);
+		System.out.println( cajeroA.displayInfo() );
 		
 		
 	

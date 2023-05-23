@@ -54,6 +54,15 @@ public class Atm {
 		}			
 	}
 	
+	public double withdraw(double amount) {
+        if(amount > 0 && amount <= getBalance()) {
+            return setBalance( getBalance() - amount);
+        } else {
+        	System.out.println("Fondos insuficientes");
+            return setBalance( getBalance() );
+        }
+    }
+	
 	public String displayInfo() {
 		//return "Serial number: " + this.serialNumber 
 		//		+ ", Amount: $"  + this.balance;
