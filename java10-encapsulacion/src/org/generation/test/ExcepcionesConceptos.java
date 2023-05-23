@@ -1,8 +1,12 @@
 package org.generation.test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class ExcepcionesConceptos {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		/**
 		 * Una excepción es una situación no esperada
 		 * durante la ejecución de un programa.
@@ -42,7 +46,37 @@ public class ExcepcionesConceptos {
 		 * 
 		 * 
 		 */
-
+		
+		// Arithmetic exception
+		System.out.println("Inicio del programa");
+		double division;
+		int[] myArray = {4,5};
+				
+		try {					
+			division= 5/2;
+			myArray[5] = 10;
+			readFile();
+		} catch (FileNotFoundException e) {		
+			e.printStackTrace();
+		} catch (ArithmeticException e) {
+			e.printStackTrace();
+//		} catch (ArrayIndexOutOfBoundsException e) {
+//			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+				
+		System.out.println("Fin del programa");
+					
 	}
+	
+	static void readFile() throws FileNotFoundException {
+		File file = new File("myfile.txt");
+		Scanner myReader = new Scanner( file  );
+	}
+	
+	
+	
 
 }
