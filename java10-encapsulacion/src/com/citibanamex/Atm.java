@@ -51,7 +51,8 @@ public class Atm {
 	}
 	
 	public double deposit(double amount) {
-		if(amount>0) {			
+		if(amount>0) {	
+			depositLog(amount);
 			return setBalance( getBalance() + amount );
 		}
 		else {
@@ -59,34 +60,57 @@ public class Atm {
 		}			
 	}
 	
-	private void setLog(double amount) {
-		this.log.add(getDate()+ " - Withdraw $ " + amount + ",  Balance: " + getBalance() + "\n");
+	private void withdrawLog(double amount) {
+		String ANSI_RESET = "\u001B[0m";
+		String ANSI_BLUE = "\u001B[34m";
+		StringBuilder strBuilder = new StringBuilder();
+		strBuilder.append(ANSI_BLUE);
+		strBuilder.append(getDate());
+		strBuilder.append(" - Withdraw $ ");
+		strBuilder.append(amount);
+		strBuilder.append(",  Balance: ");
+		strBuilder.append(getBalance());
+		strBuilder.append("\n");
+		strBuilder.append(ANSI_RESET);
+		
+		this.log.add(strBuilder.toString());
+	}
+	
+	private void depositLog(double amount) {
+		String ANSI_RESET = "\u001B[0m";
+		String ANSI_YELLOW = "\u001B[33m";
+		StringBuilder strBuilder = new StringBuilder();
+		strBuilder.append(ANSI_YELLOW);
+		strBuilder.append(getDate());
+		strBuilder.append(" - Deposit $ ");
+		strBuilder.append(amount);
+		strBuilder.append(",  Balance: ");
+		strBuilder.append(getBalance());
+		strBuilder.append("\n");
+		strBuilder.append(ANSI_RESET);
+		
+		this.log.add(strBuilder.toString());
 	}
 	
 	public String getLog() {
-		String ANSI_RESET = "\u001B[0m";
-		String ANSI_BLUE = "\u001B[34m";
-		String ANSI_YELLOW = "\u001B[33m";
-
 		StringBuilder strBuilder = new StringBuilder();
-		
-		strBuilder.append(ANSI_YELLOW);
+				
 		for (String event : this.log ) {
 			strBuilder.append(event);
-		}
-		strBuilder.append(ANSI_RESET);
-		
+		}		
 	    return strBuilder.toString();			
 	}
 	
 	public double withdraw(double amount) {
-        if(amount > 0 && amount <= getBalance()) {
-        	setLog(amount);
-            return setBalance( getBalance() - amount);
-        } else {
-        	System.out.println("Fondos insuficientes");
-            return  getBalance();
-        }
+		  if(amount <= 0 )
+	            System.out.println("cantidad no valida");
+	        else if(amount > getBalance())
+	            System.out.println("Fondos insuficientes");
+	        else {
+	        	withdrawLog(amount);
+	            return setBalance( getBalance() - amount);
+	        }
+	        return  getBalance();
     }
 	
 	private String getDate() {
@@ -97,9 +121,7 @@ public class Atm {
 	
 	public String displayInfo() {
 		//return "Serial number: " + this.serialNumber 
-		//		+ ", Amount: $"  + this.balance;
-			
-		
+		//		+ ", Amount: $"  + this.balance;		
 		StringBuilder strBuilder = new StringBuilder();
 		strBuilder.append("Serial number: ");
 		strBuilder.append(this.serialNumber);
