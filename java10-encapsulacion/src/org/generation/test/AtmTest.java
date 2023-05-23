@@ -20,9 +20,7 @@ public class AtmTest {
 		System.out.println( cajeroA.displayInfo() );
 		
 		System.out.println( cajeroA.getLog()  );
-		String ANSI_RESET = "\u001B[0m";
-	    String ANSI_BLUE = "\u001B[34m";
-	    System.out.println(ANSI_BLUE + cajeroA.getLog() + ANSI_RESET);
+		
 
 
 	}

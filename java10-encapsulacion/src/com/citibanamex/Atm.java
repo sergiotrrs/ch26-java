@@ -64,12 +64,19 @@ public class Atm {
 	}
 	
 	public String getLog() {
+		String ANSI_RESET = "\u001B[0m";
+		String ANSI_BLUE = "\u001B[34m";
+		String ANSI_YELLOW = "\u001B[33m";
+
 		StringBuilder strBuilder = new StringBuilder();
 		
+		strBuilder.append(ANSI_YELLOW);
 		for (String event : this.log ) {
 			strBuilder.append(event);
-		}				
-		return strBuilder.toString();	
+		}
+		strBuilder.append(ANSI_RESET);
+		
+	    return strBuilder.toString();			
 	}
 	
 	public double withdraw(double amount) {
