@@ -20,6 +20,7 @@ public class AtmTest {
 		System.out.println( cajeroA.displayInfo() );
 		
 		System.out.println( cajeroA.getLog()  );
+		System.out.println( cajeroA.getLog(2)  );
 		
 
 

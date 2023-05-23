@@ -101,6 +101,17 @@ public class Atm {
 	    return strBuilder.toString();			
 	}
 	
+	public String getLog(int items) {
+		StringBuilder strBuilder = new StringBuilder();
+		
+		for (int i = this.log.size()-1; i >= this.log.size()-items; i--) {
+			strBuilder.append(this.log.get(i));			
+		}		
+			
+	    return strBuilder.toString();
+	}
+	
+	
 	public double withdraw(double amount) {
 		  if(amount <= 0 )
 	            System.out.println("cantidad no valida");
