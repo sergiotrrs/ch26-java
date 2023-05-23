@@ -11,6 +11,7 @@ public class AtmTest {
 		Atm cajeroB = new Atm();	
 		Atm cajeroC = new Atm("777000");
 		
+		try {
 		cajeroA.deposit(4_000);		
 		System.out.println( cajeroA.displayInfo() );
 		cajeroA.withdraw(2_500);
@@ -21,7 +22,13 @@ public class AtmTest {
 		
 		System.out.println( cajeroA.getLog()  );
 		
-		cajeroA.withdraw(50_000);
+		//cajeroA.withdraw(-3000);
+	    //cajeroA.withdraw(300_000);
+		} catch(Exception e) {
+			e.printStackTrace();			
+		}
+	    
+	    
 		System.out.println( cajeroA.getLog(2)  );
 		
 

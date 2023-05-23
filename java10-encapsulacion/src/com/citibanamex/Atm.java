@@ -112,16 +112,15 @@ public class Atm {
 	}
 	
 	
-	public double withdraw(double amount) {
-		  if(amount <= 0 )
-	            System.out.println("cantidad no valida");
-	        else if(amount > getBalance())
-	            System.out.println("Fondos insuficientes");
-	        else {
+	public void withdraw(double amount) throws IllegalArgumentException, IllegalStateException {
+		  if(amount <= 0 )	            
+			  throw new IllegalArgumentException("Cantidad no debe ser menor a 0");
+	      else if(amount > getBalance())
+	    	  throw new IllegalStateException("Fondos insuficientes");	            
+	      else {
 	        	withdrawLog(amount);
-	            return setBalance( getBalance() - amount);
-	        }
-	        return  getBalance();
+	            setBalance( getBalance() - amount);
+	        }	   
     }
 	
 	private String getDate() {
