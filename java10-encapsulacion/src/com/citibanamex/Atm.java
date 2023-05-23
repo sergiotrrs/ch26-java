@@ -1,9 +1,14 @@
 package com.citibanamex;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Atm {
 	
 	private int serialNumber;
 	private double balance;
+	private ArrayList<String> log = new ArrayList<>();
 	
 	private static int counterAtm = 1;
 	
@@ -54,26 +59,47 @@ public class Atm {
 		}			
 	}
 	
+	private void setLog(double amount) {
+		this.log.add(getDate()+ " - Withdraw $ " + amount + ",  Balance: " + getBalance() + "\n");
+	}
+	
+	public String getLog() {
+		StringBuilder strBuilder = new StringBuilder();
+		
+		for (String event : this.log ) {
+			strBuilder.append(event);
+		}				
+		return strBuilder.toString();	
+	}
+	
 	public double withdraw(double amount) {
         if(amount > 0 && amount <= getBalance()) {
+        	setLog(amount);
             return setBalance( getBalance() - amount);
         } else {
         	System.out.println("Fondos insuficientes");
-            return setBalance( getBalance() );
+            return  getBalance();
         }
     }
+	
+	private String getDate() {
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss");
+		return dateFormat.format(date);
+	}
 	
 	public String displayInfo() {
 		//return "Serial number: " + this.serialNumber 
 		//		+ ", Amount: $"  + this.balance;
+			
+		
 		StringBuilder strBuilder = new StringBuilder();
 		strBuilder.append("Serial number: ");
 		strBuilder.append(this.serialNumber);
 		strBuilder.append(", Amount: $");
 		strBuilder.append(this.balance);
 		
-		return strBuilder.toString();
-		
+		return strBuilder.toString();	
 	}
 		
 }

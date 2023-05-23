@@ -15,12 +15,15 @@ public class AtmTest {
 		System.out.println( cajeroA.displayInfo() );
 		cajeroA.withdraw(2_500);
 		System.out.println( cajeroA.displayInfo() );
-		cajeroA.withdraw(20_000);
+		cajeroA.withdraw(1_000);
+		cajeroA.withdraw(500);
 		System.out.println( cajeroA.displayInfo() );
 		
-		
-	
-		
+		System.out.println( cajeroA.getLog()  );
+		String ANSI_RESET = "\u001B[0m";
+	    String ANSI_BLUE = "\u001B[34m";
+	    System.out.println(ANSI_BLUE + cajeroA.getLog() + ANSI_RESET);
+
 
 	}
 
