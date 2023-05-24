@@ -6,6 +6,7 @@ public class Chihuahua extends Dog{
 		super(name);		
 	}
 	
+	@Override
 	public String makeNoise() {
 		return "wau wau wau ... wau wau";
 	}

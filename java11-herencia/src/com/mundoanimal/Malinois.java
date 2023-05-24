@@ -6,6 +6,7 @@ public class Malinois extends Dog{
 		super(name);		
 	}
 	
+	@Override
 	public String makeNoise() {
 		return "guaff guaff guaff";
 	}

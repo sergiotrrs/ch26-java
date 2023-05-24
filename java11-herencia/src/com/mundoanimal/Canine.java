@@ -44,6 +44,11 @@ public abstract class Canine extends Animal {
 		 + " come " + kg + " kg. de " + food ;		
 	}
 	
+	public String makeNoise() {
+		return "grrrr";
+	}
+	
+	
 	
 	/**
 	 * Al ser la clase Canine abstracta, no tiene

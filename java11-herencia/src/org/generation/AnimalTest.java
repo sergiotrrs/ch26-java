@@ -22,10 +22,18 @@ public class AnimalTest {
 		// sobreescribir makeNoise()
 		
 		Animal hercules = new Chihuahua("Hércules"); 
-		System.out.println( ((Dog)hercules).makeNoise() ); // wau wau wau ... wau wau
+		System.out.println( ((Canine)hercules).makeNoise() ); // wau wau wau ... wau wau
 
 		Animal benancio = new Malinois("Benancio"); 
-		System.out.println( ((Dog)benancio).makeNoise() ); // guaff guaff guaff
+		System.out.println( ((Canine)benancio).makeNoise() ); // guaff guaff guaff
+		
+		Animal colmillo = new Wolf("Colmillo", "Alfa");
+		Animal jacob = new Wolf("Jacob", "Beta");
+		System.out.println(colmillo.getName()+ ": " + ((Canine)colmillo).makeNoise());
+		System.out.println(jacob.getName()+ ": " + ((Canine)jacob).makeNoise());
+		
+		
+		
 		
 		
 		

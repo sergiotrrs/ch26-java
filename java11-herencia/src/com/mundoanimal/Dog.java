@@ -16,10 +16,7 @@ public class Dog extends Canine {
 		return "El lomito " + getName() + " come " + food + " todo bonito todo panzon";
 	}
 
-	public String makeNoise() {
-		return "grrrr";
-	}
-	
+
 	
 
 }
