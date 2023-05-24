@@ -40,7 +40,7 @@ public abstract class Animal {
 	abstract public String showPicture();
 	
 	public String eat(String food) {
-		return this.name + " está comiendo " + food;		
+		return "El animal " +this.name + " está comiendo " + food;		
 	}
 	
 	public String sleep(int minutes) {
