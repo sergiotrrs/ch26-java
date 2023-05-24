@@ -1,19 +1,43 @@
 package com.mundoanimal;
-
-public class Animal {
+/**
+ * Las clases abstractas son clases que no se pueden instanciar.
+ * Estas clases se utilizan como modelos(plantillas) para
+ * crear subclases concretas que se pueden instanciar.
+ * 
+ * Una clase abstracta se declara en la firma de la clase
+ * con la palabra 'abstract'.
+ * 
+ * La clase abstracta puede contener métodos abstractos y
+ * métodos concretos.
+ * 
+ * Un método abstracto se declara sin implementación y se 
+ * definen en las subclases.
+ * 
+ * Las clases abstractas se recomienda utilizar para
+ * clases que estén estrechamente relacionadas (is-A).
+ * 
+ * @author TuX3
+ *
+ */
+public abstract class Animal {
 	private String name= "---";
 	private String type = "---";
 	private double sizeInMts;
 	private double weightInKg;
 	private boolean alive;
 	
-	public Animal() {
-		
-	}
 	
 	public Animal(String name) {
 		this.name = name;
 	}
+	
+	/**
+	 * Un método abstracto no tiene cuerpo, solo la definición del método.
+	 * Termina el punto y coma.
+	 * La clase heredada es quién implementará el comportamiento.
+	 * Si existe un método abstracto, la clase también debe ser abstracta.	 * 
+	 */
+	abstract public String showPicture();
 	
 	public String eat(String food) {
 		return this.name + " está comiendo " + food;		
