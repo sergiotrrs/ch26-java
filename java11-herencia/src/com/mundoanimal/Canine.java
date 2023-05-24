@@ -25,7 +25,30 @@ public abstract class Canine extends Animal {
 	 * una implementación diferente a un método que está definido
 	 * el la clase superior. Permite personalizar el comportamiento
 	 * heredado.
+	 * 
+	 * @Override: Indica que el método está sobreescribiendo
+	 * el comportamiento de un método de la clase heredada.
+	 * Su propósito es hacer una varificación en tiempo
+	 * de compilación para asegurarse que la subclase
+	 * está sobreescribiendo correctamente y coincide
+	 * con la firma del método de la clase superior.
 	 */
+	@Override
+	public String eat(String food) {
+		return "El canino " + super.getName() + " come " + food;		
+	}
 	
+	
+	public String eat(String food, double kg) {
+		return "El canino " + super.getName() 
+		 + " come " + kg + " kg. de " + food ;		
+	}
+	
+	
+	/**
+	 * Al ser la clase Canine abstracta, no tiene
+	 * la obligación de realizar la implementación
+	 * en el método abastracto 'showPicture'.
+	 */
 
 }
