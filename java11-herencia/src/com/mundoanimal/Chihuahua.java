@@ -2,9 +2,10 @@ package com.mundoanimal;
 
 import com.pet.Pet;
 
-public class Chihuahua extends Dog implements Pet{
+public final class Chihuahua extends Dog implements Pet{
 	
 	private String ownerName;
+	static final String COUNTRY_OF_ORIGIN = "México"; 
 
 	public Chihuahua(String name) {
 		super(name);		
@@ -30,5 +31,20 @@ public class Chihuahua extends Dog implements Pet{
 	public String getOwnerName() {
 		return this.ownerName;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(super.toString() );
+		builder.append("\tChihuahua [ownerName=");
+		builder.append(ownerName);
+		builder.append("]\n");
+		return builder.toString();
+	}
+	
+	
+	
+
+	
 
 }

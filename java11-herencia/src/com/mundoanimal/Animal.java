@@ -28,6 +28,7 @@ public abstract class Animal {
 	
 	
 	public Animal(String name) {
+		super();
 		this.name = name;
 	}
 	
@@ -47,45 +48,69 @@ public abstract class Animal {
 		return this.name+" duerme " + minutes + " minutos";
 	}
 
-	public String getName() {
+	final public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	// con final en la firma del método
+	// evitamos que clases que heredan puedan
+	// sobreescribirlo.
+	final public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getType() {
+	final public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	final public void setType(String type) {
 		this.type = type;
 	}
 
-		public double getSizeInMts() {
+	final public double getSizeInMts() {
 		return sizeInMts;
 	}
 
-	public void setSizeInMts(double sizeInMts) {
+	final public void setSizeInMts(double sizeInMts) {
 		this.sizeInMts = sizeInMts;
 	}
 
-	public double getWeightInKg() {
+	final public double getWeightInKg() {
 		return weightInKg;
 	}
 
-	public void setWeightInKg(double weightInKg) {
+	final public void setWeightInKg(double weightInKg) {
 		this.weightInKg = weightInKg;
 	}
 
-	public boolean isAlive() {
+	final public boolean isAlive() {
 		return alive;
 	}
 
-	public void setAlive(boolean alive) {
+	final public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Animal [name=");
+		builder.append(name);
+		builder.append(", type=");
+		builder.append(type);
+		builder.append(", sizeInMts=");
+		builder.append(sizeInMts);
+		builder.append(", weightInKg=");
+		builder.append(weightInKg);
+		builder.append(", alive=");
+		builder.append(alive);
+		builder.append("]\n");
+		return builder.toString();
+	}
+
+
+	
+	
 		
 	
 	
