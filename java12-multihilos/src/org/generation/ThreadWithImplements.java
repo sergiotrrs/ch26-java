@@ -1,7 +1,7 @@
 package org.generation;
 
 
-class MyThreadRunnable implements Runnable {
+class MyThreadRunnable extends Atm implements Runnable {
 	
 	private String name;
 
