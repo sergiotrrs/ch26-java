@@ -1,8 +1,10 @@
 package org.generation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mundoanimal.*;
+import com.pet.Pet;
 
 
 public class AnimalTest {
@@ -18,6 +20,15 @@ public class AnimalTest {
 		Animal benancio = new Malinois("Benancio"); 
 		Animal colmillo = new Wolf("Colmillo", "Alfa");
 		Animal jacob = new Wolf("Jacob", "Beta");
+		Pet kraken = new Chihuahua("Kraken");
+		
+		System.out.println( ((Chihuahua)kraken).makeNoise()  );
+		System.out.println( ((Chihuahua)kraken).getName()  );
+		
+		List<Pet> pets = new ArrayList<>();
+		pets.add(kraken);
+		pets.add( (Chihuahua)hercules   );
+		
 		
 		ArrayList<Animal> shelter = new ArrayList<>();
 		shelter.add(solovino);
