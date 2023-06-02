@@ -8,6 +8,7 @@ public class Math {
 	
 	public double suma( double a, double b) {
 		return a + b;
+		//return (a*1000 + b*1000)/1000;
 	}
 	
 	public boolean isPositive( double value) {
