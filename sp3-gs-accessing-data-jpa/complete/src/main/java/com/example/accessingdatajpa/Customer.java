@@ -18,7 +18,7 @@ public class Customer {
 
 	
 	@Id // atributo que será la clave primaria de la entidad	
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	// indica como se generará automáticamente
 	// el valor de las claves primarias
 	private Long id;
