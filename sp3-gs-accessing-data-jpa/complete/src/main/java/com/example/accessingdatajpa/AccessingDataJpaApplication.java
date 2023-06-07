@@ -17,7 +17,7 @@ public class AccessingDataJpaApplication {
 	}
 
 	/*
-	 * @Bean se utilizas para indicar que un métod en una clase de Spring
+	 * @Bean se utilizas para indicar que un método en una clase de Spring
 	 * devuelve un objeto que debe ser administrado por el contenedor de Spring
 	 * 
 	 * Cuando se utiliza @Bean en un método, Spring se encarga de llamar a ese método 
@@ -73,5 +73,17 @@ public class AccessingDataJpaApplication {
 			log.info("");
 		};
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
