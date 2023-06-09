@@ -12,7 +12,7 @@ public interface CustomerService {
 	 * @param customer datos enviados por la solicitud HTTP
 	 * @return el registro del cliente con el id asignado por la DB
 	 */
-	Customer createCustomer(Customer customer);
+	CustomerDto createCustomer(CustomerDto customerDto);
 	
 	/**
 	 * Retornar los datos del cliente por medio de su id

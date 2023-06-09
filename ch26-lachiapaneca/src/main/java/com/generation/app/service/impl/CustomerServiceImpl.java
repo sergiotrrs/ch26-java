@@ -2,6 +2,8 @@ package com.generation.app.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,10 +33,14 @@ public class CustomerServiceImpl implements CustomerService {
 	CustomerRepository customerRepository;
 
 	@Override
-	public Customer createCustomer(Customer customer) {
-		// TODO crear Cliente
-
-		return null;
+	public CustomerDto createCustomer(CustomerDto customerDto) {
+		// TODO Verificar si el email existe
+		// TODO Verificar que los atributos estén dentro de los parámetros establecido.
+		Customer customer = CustomerMapper.mapToCustomer(customerDto);				
+		customer.setId(0);
+		Customer savedCustomer = customerRepository.save(customer);
+		
+		return CustomerMapper.mapToCustomerDto(savedCustomer)  ;
 	}
 
 	@Override
@@ -60,12 +66,20 @@ public class CustomerServiceImpl implements CustomerService {
 		List<Customer> customers =  customerRepository.findAllCustomerByActive(true);
 		
 		// Convertir el listado tipo Customer a un listado CustomerDto
-		List<CustomerDto> customersDto = new ArrayList<>();
-		customers.forEach( customer ->{
-			customersDto.add(   CustomerMapper.mapToCustomerDto(customer) );
-		});
+//		List<CustomerDto> customersDto = new ArrayList<>();
+//		customers.forEach( customer ->{
+//			customersDto.add(   CustomerMapper.mapToCustomerDto(customer) );
+//		});
+		// Los streams se introduce en Java 8 y permite operar de manera
+		// eficiente y concisa en colecciones.
+		// Se puede realizar operaciones como: mapeo, ordenación, agrupación, reducción, etc.
 		
-		
+		List<CustomerDto> customersDto = customers
+				.stream()			
+				.map( customer-> CustomerMapper.mapToCustomerDto(customer) )
+				.collect( Collectors.toList()); // recopila los elementos del stream en una estructura
+		                                        // especificada. En este caso se convierte en una colección de tipo List
+								
 		return customersDto;
 	}
 
@@ -77,7 +91,15 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void deleteUser(long id) {
-		// TODO Auto-generated method stub
+		/*
+		 *  La clase Optional es una clase contenedora que se utiliza para representar un valor
+		 *  que puede ser nulo.
+		 */
+		Customer existingCustomer = customerRepository.findById(id)
+				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );
+		existingCustomer.setActive(false);
+		customerRepository.save( existingCustomer );
+		
 		
 	}
 
