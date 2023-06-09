@@ -2,10 +2,9 @@ package com.generation.app.entity;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.generation.app.config.CustomerParameters;
+
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 /*
@@ -23,22 +22,39 @@ import lombok.NoArgsConstructor;
  * 
  * @GeneratedValue indica como se generará automáticamente el valor de las claves 
  * primarias.
+ * 
+ * @Table indica el nombre de lña tabla en la DB quie se debe utilizar para mapear la entidad.
+ * 
+ * @Column se usa en JPA para mapear un atributo de la clase de la entidad a una columna
+ * de una tabla en la DB.
  */
 @NoArgsConstructor
 @Data
 @Entity
-public class Customer {
+@Table(name = "customer")
+public class Customer implements CustomerParameters {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private long id;
+	@Column(name = "first_name", nullable = false, length = FIRSTNAME_MAX_LENGTH)
 	private String firstName;
+	@Column(name = "last_name", length = LASTNAME_MAX_LENGTH)
 	private String lastName;
+	@Column(name = "address", length = ADDRESS_MAX_LENGTH)
 	private String address;
+	@Column(name = "email", nullable = false, unique = true, length = EMAIL_MAX_LENGTH)
 	private String email;
+	@Column(name = "pasword", nullable = false, length = PASSWORD_MAX_LENGTH)
 	private String password;
+	@Column(name = "active")
 	private boolean active;
-	private Timestamp create_at;	
+	// insertablem, updatable: la columna se incluye en las operaciones de inserción/actualización
+	// columnDefinirtion: definición personalizada para la columna(tipo específico de dato, restricciones)
+	@Column(name = "create_at", insertable = false, updatable = false
+			, columnDefinition = "timestamp default  CURRENT_TIMESTAMP")
+	private Timestamp createAt;	
 	
 }
 
