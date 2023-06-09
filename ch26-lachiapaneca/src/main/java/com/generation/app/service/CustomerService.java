@@ -46,7 +46,11 @@ public interface CustomerService {
 	 */
 	Customer updateCustomer(Customer customer);
 	
-	
+	/**
+	 * Establece como inactivo al cliente con el id indicado. Field active = false.
+	 * @param id cliente
+	 */
+	void deleteUser(long id);
 	
 
 }
