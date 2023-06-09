@@ -46,7 +46,7 @@ public class Customer implements CustomerParameters {
 	private String address;
 	@Column(name = "email", nullable = false, unique = true, length = EMAIL_MAX_LENGTH)
 	private String email;
-	@Column(name = "pasword", nullable = false, length = PASSWORD_MAX_LENGTH)
+	@Column(name = "password", nullable = false, length = PASSWORD_MAX_LENGTH)
 	private String password;
 	@Column(name = "active")
 	private boolean active;
