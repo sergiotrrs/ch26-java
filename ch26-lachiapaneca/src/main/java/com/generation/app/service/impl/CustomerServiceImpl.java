@@ -1,13 +1,18 @@
 package com.generation.app.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.generation.app.dto.CustomerDto;
 import com.generation.app.entity.Customer;
+import com.generation.app.mapper.CustomerMapper;
 import com.generation.app.repository.CustomerRepository;
 import com.generation.app.service.CustomerService;
+
+import lombok.AllArgsConstructor;
 
 /*
  *  @Service indica que la clase es uin componente de servicio. SpringBoot registra la clase
@@ -19,10 +24,10 @@ import com.generation.app.service.CustomerService;
  *  servicios, realiza cálculos, filtros, etc.
  *  
  */
+@AllArgsConstructor // Para realizar el constructor y se realice la inyección de dependencias
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	
-	@Autowired
 	CustomerRepository customerRepository;
 
 	@Override
@@ -51,9 +56,17 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> getAllActiveCustomers() {
+	public List<CustomerDto> getAllActiveCustomers() {
 		List<Customer> customers =  customerRepository.findAllCustomerByActive(true);
-		return customers;
+		
+		// Convertir el listado tipo Customer a un listado CustomerDto
+		List<CustomerDto> customersDto = new ArrayList<>();
+		customers.forEach( customer ->{
+			customersDto.add(   CustomerMapper.mapToCustomerDto(customer) );
+		});
+		
+		
+		return customersDto;
 	}
 
 	@Override

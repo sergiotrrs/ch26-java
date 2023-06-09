@@ -2,6 +2,7 @@ package com.generation.app.service;
 
 import java.util.List;
 
+import com.generation.app.dto.CustomerDto;
 import com.generation.app.entity.Customer;
 
 public interface CustomerService {
@@ -37,7 +38,7 @@ public interface CustomerService {
 	 * Obtener todos los registros de los clientes activos
 	 * @return lista de clientes activos
 	 */
-	List<Customer> getAllActiveCustomers();
+	List<CustomerDto> getAllActiveCustomers();
 	
 	/**
 	 * Actualizar el registro con el cliente indicado

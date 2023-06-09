@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.app.dto.CustomerDto;
 import com.generation.app.entity.Customer;
 import com.generation.app.service.CustomerService;
 
@@ -24,8 +25,8 @@ public class CustomerController {
 	}
 	
 	@GetMapping("active")
-	public List<Customer> getAllActiveCustomers(){
-		List<Customer> customers = customerService.getAllActiveCustomers();
+	public List<CustomerDto> getAllActiveCustomers(){
+		List<CustomerDto> customers = customerService.getAllActiveCustomers();
 		return customers;
 	}
 	
