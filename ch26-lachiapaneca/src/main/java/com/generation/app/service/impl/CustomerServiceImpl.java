@@ -77,6 +77,8 @@ public class CustomerServiceImpl implements CustomerService {
 		List<CustomerDto> customersDto = customers
 				.stream()			
 				.map( customer-> CustomerMapper.mapToCustomerDto(customer) )
+						// Ordenar por su apellido de forma ascendente
+				.sorted( (c1,c2)-> c1.getLastName().compareToIgnoreCase(c2.getLastName()) )
 				.collect( Collectors.toList()); // recopila los elementos del stream en una estructura
 		                                        // especificada. En este caso se convierte en una colección de tipo List
 								
