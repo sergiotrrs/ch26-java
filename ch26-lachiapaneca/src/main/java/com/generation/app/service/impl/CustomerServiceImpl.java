@@ -104,7 +104,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer findCustomerById(long id) {
 		Customer existingCustomer = customerRepository.findById(id)
-				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );
+				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );				
 		return existingCustomer;
 	}
 
