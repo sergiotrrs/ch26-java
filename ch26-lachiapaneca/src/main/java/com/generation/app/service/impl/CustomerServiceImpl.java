@@ -49,11 +49,6 @@ public class CustomerServiceImpl implements CustomerService {
 		return null;
 	}
 
-	@Override
-	public Customer findCustomerById(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
@@ -86,9 +81,11 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerDto updateCustomer(CustomerDto customerDto) {
+		Customer existingCustomer = findCustomerById(customerDto.getId());
+		existingCustomer = CustomerMapper.mapToCustomer(customerDto, existingCustomer);
+		customerRepository.save( existingCustomer );
+		return CustomerMapper.mapToCustomerDto(existingCustomer);
 	}
 
 	@Override
@@ -97,12 +94,18 @@ public class CustomerServiceImpl implements CustomerService {
 		 *  La clase Optional es una clase contenedora que se utiliza para representar un valor
 		 *  que puede ser nulo.
 		 */
-		Customer existingCustomer = customerRepository.findById(id)
-				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );
+		Customer existingCustomer = findCustomerById(id);
 		existingCustomer.setActive(false);
 		customerRepository.save( existingCustomer );
 		
 		
+	}
+
+	@Override
+	public Customer findCustomerById(long id) {
+		Customer existingCustomer = customerRepository.findById(id)
+				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );
+		return existingCustomer;
 	}
 
 }

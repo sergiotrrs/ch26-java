@@ -45,7 +45,7 @@ public interface CustomerService {
 	 * @param customer datos enviados por la solicitud HTTP
 	 * @return el registro del cliente con los datos modificados
 	 */
-	Customer updateCustomer(Customer customer);
+	CustomerDto updateCustomer(CustomerDto customerDto);
 	
 	/**
 	 * Establece como inactivo al cliente con el id indicado. Field active = false.

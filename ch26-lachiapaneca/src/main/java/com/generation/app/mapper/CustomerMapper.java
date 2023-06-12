@@ -34,12 +34,12 @@ public abstract class CustomerMapper {
 	/**
 	 * Convierte un objeto de tipo CustomerDto a Customer
 	 * @param customerDto
-	 * @return customer
+	 * @return new customer
 	 */
 	public static Customer mapToCustomer(CustomerDto customerDto) {
 		Customer customer = new Customer();
 		
-		customer.setId( customerDto.getId() );
+		customer.setId( customerDto.getId()  );
 		customer.setFirstName( customerDto.getFirstName() );
 		customer.setLastName( customerDto.getLastName() );
 		customer.setAddress( customerDto.getAddress() );
@@ -48,6 +48,24 @@ public abstract class CustomerMapper {
 		customer.setActive( true );		
 		
 		return customer;
+		
+	}
+	
+	/**
+	 * Convierte un objeto de tipo CustomerDto a Customer existente
+	 * @param customerDto
+	 * @return existingCustomer
+	 */
+	public static Customer mapToCustomer(CustomerDto customerDto, Customer existingCustomer ) {
+
+		existingCustomer.setFirstName( customerDto.getFirstName() );
+		existingCustomer.setLastName( customerDto.getLastName() );
+		existingCustomer.setAddress( customerDto.getAddress() );
+		existingCustomer.setEmail( customerDto.getEmail() );
+		existingCustomer.setPassword( customerDto.getPassword() );
+		existingCustomer.setActive( true );		
+		
+		return existingCustomer;
 		
 	}
 	
