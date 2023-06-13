@@ -23,9 +23,12 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		// TODO leer roles de la DB
+		// Por convención los roles se representan como cadenas de texto 
+		// que comienzan con el prefijo ROLE_
+		// Esto es una convención para distinguir los role de otros
+		// tipos de autorizacies o permisos.
 		authorities.add(  new SimpleGrantedAuthority("ROLE_ADMIN") );
-		//authorities.add(  new SimpleGrantedAuthority("CUSTOMER") );
+		//authorities.add(  new SimpleGrantedAuthority("ROLE_CUSTOMER") );
 		return authorities;
 	}
 

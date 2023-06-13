@@ -69,8 +69,7 @@ public class WebSecurityConfig {
 						)                                
 				.csrf( csrf -> csrf.disable() ) 			                              
 				.httpBasic( withDefaults() ) 
-				.build();
-		
+				.build();		
 	}
 	
 	// SETEP 4 Autenticación en nombre usuario/contraseña almacenada en memoria
