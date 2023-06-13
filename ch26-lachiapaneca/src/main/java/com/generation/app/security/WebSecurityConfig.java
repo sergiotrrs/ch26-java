@@ -4,6 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -49,6 +53,30 @@ public class WebSecurityConfig {
 				.build();
 		
 	}
+	
+	// SETEP 4 Autenticación en nombre usuario/contraseña almacenada en la memoria		
+	@Bean
+	UserDetailsService userDetailsService() {
+			UserDetails sergio = User.builder()
+					.username("sergio")
+					.password("{noop}123")
+					.roles("ADMIN", "SAYAJIN")
+					.build();
+			
+			UserDetails puerquito = User.builder()
+					.username("puerquito")
+					.password("{noop}111")
+					.roles("CUSTOMER")
+					.build();
+			
+			UserDetails tigger = User.builder()
+					.username("tigger")
+					.password("{noop}222")
+					.roles("CUSTOMER")
+					.build();
+			return new InMemoryUserDetailsManager( sergio, puerquito, tigger );  
+					
+		}
 	
 	
 
