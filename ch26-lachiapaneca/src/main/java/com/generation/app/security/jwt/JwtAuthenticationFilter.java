@@ -61,9 +61,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
 		
 		// STEP 24 crear el toke
-		String token = "Hola Ch26, están con mucho silencio, aiuda"; // TODO crear utiliza para generar el token
+//		String token = "Hola Ch26, están con mucho silencio, aiuda"; // TODO crear utiliza para generar el token
+		String token = JwtTokenUtils.createToken( 
+				userDetails.getFullName()
+				, userDetails.getUsername()
+				, userDetails.getAuthorities());
 		
-		// STEP ? agregar el token al header de la respuesta
+		// STEP 27 agregar el token al header de la respuesta
 		response.addHeader("Authorization", "Bearer " + token);
 		// Envía los datos escritos en printWriter asociado al objeto HttpServletResponse
 		// Forza el envío inmediato de los datos al cliente.
