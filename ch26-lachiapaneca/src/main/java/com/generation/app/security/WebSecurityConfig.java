@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.generation.app.security.jwt.JwtAuthenticationFilter;
+
 import lombok.AllArgsConstructor;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -42,8 +44,8 @@ public class WebSecurityConfig {
 	UserDetailsService userDetailsService;
 	
 	// STEP 1 realizar configuraciones personalizadas del filterChain
-	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	@Bean                                   // STEP 14.3 inyectar AuthenticationManager 
+	SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
 		
 		// STEP 2 probar deshabilitar la seguridad
 /*		return http
@@ -55,6 +57,12 @@ public class WebSecurityConfig {
 				.httpBasic( withDefaults() ) // Habilita la autenticación básica.
 				.build();
 				*/
+		// STEP 14.1 Crear un objeto de JwtAuthenticationFilter
+		JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter();
+		// STEP 14.2 Indicar quién maneja la autenticación
+		jwtAuthenticationFilter.setAuthenticationManager(authManager);
+		// STEP 14.4 Indicar la url de la solicituid
+		jwtAuthenticationFilter.setFilterProcessesUrl("/login" ); // localhost:8080/login
 		
 		// SETP 3 Configurar las reglas de autorización para las diferentes solicitudes HTTP
 		return http
@@ -66,7 +74,12 @@ public class WebSecurityConfig {
 						.requestMatchers("/api/products/**").hasRole("CUSTOMER")
 						.requestMatchers("/api/customers/**").hasAnyRole("ADMIN", "SAYAJIN")					
 						.anyRequest().authenticated() // Todas las solicitud deben estar autenticadas					
-						)                                
+						)  
+				// STEP 14 agregar un filtro que intercepte la autentificación y genere el toke JWT
+				.addFilter( jwtAuthenticationFilter  ) 
+				// STEP ? agregar un filtro que lea el token que viene acompañado de la solicitud HTTP
+				//        y verificar si es válido y no está caducado.
+				
 				.csrf( csrf -> csrf.disable() ) 			                              
 				.httpBasic( withDefaults() ) 
 				.build();		

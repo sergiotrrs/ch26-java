@@ -1,14 +1,17 @@
 package com.generation.app.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.generation.app.dto.CustomerDto;
 import com.generation.app.entity.Customer;
 
+
 public abstract class CustomerMapper {
 	
-	
+
 	CustomerDto customerDto;
 	Customer customer;
 	
@@ -44,7 +47,7 @@ public abstract class CustomerMapper {
 		customer.setLastName( customerDto.getLastName() );
 		customer.setAddress( customerDto.getAddress() );
 		customer.setEmail( customerDto.getEmail() );
-		customer.setPassword( customerDto.getPassword() );
+		customer.setPassword( new BCryptPasswordEncoder().encode( customerDto.getPassword() ) );
 		customer.setActive( true );		
 		
 		return customer;
@@ -62,7 +65,7 @@ public abstract class CustomerMapper {
 		existingCustomer.setLastName( customerDto.getLastName() );
 		existingCustomer.setAddress( customerDto.getAddress() );
 		existingCustomer.setEmail( customerDto.getEmail() );
-		existingCustomer.setPassword( customerDto.getPassword() );
+		existingCustomer.setPassword( new BCryptPasswordEncoder().encode( customerDto.getPassword() )  );
 		existingCustomer.setActive( true );		
 		
 		return existingCustomer;
