@@ -24,7 +24,7 @@ public class UserDetailsImpl implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		// TODO leer roles de la DB
-		authorities.add(  new SimpleGrantedAuthority("ADMIN") );
+		authorities.add(  new SimpleGrantedAuthority("ROLE_ADMIN") );
 		//authorities.add(  new SimpleGrantedAuthority("CUSTOMER") );
 		return authorities;
 	}

@@ -73,7 +73,7 @@ public class WebSecurityConfig {
 		
 	}
 	
-	// SETEP 4 Autenticación en nombre usuario/contraseña almacenada 4444
+	// SETEP 4 Autenticación en nombre usuario/contraseña almacenada en memoria
 //	@Bean
 //	UserDetailsService userDetailsService() {
 //			UserDetails sergio = User.builder()
@@ -96,6 +96,7 @@ public class WebSecurityConfig {
 //			return new InMemoryUserDetailsManager( sergio, puerquito, tigger );  
 //					
 //		}
+	
 	// STEP 6 Leer los usuarios de las base de datos
 	@SuppressWarnings("removal")
 	@Bean
