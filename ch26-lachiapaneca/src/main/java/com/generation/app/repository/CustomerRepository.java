@@ -1,6 +1,7 @@
 package com.generation.app.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -39,6 +40,9 @@ import com.generation.app.entity.Customer;
  *  CrudRepository puede ser suficiente.
  */
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+	
+	// STEP 11 Agregar el método para buscar por email
+	Optional<Customer> findByEmail(String email);
 	
 	List<Customer> findAllCustomerByActive(boolean stateActive);
 
