@@ -47,11 +47,11 @@ public class WebSecurityConfig {
 	@Autowired
 	UserDetailsService userDetailsService;	
 	
-	// STEP 1 realizar configuraciones personalizadas del filterChain
+	// STEP 01 realizar configuraciones personalizadas del filterChain
 	@Bean                                   // STEP 14.3 inyectar AuthenticationManager 
 	SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
 	
-		// STEP 2 probar deshabilitar la seguridad
+		// STEP 02 probar deshabilitar la seguridad
 /*		return http
 				.authorizeHttpRequests( authorize ->
 						authorize.anyRequest().permitAll() // Cualquier solicitud es permitida						
@@ -68,11 +68,11 @@ public class WebSecurityConfig {
 		// STEP 14.4 Indicar la url de la solicituid
 		jwtAuthenticationFilter.setFilterProcessesUrl("/login" ); // localhost:8080/login
 		
-		// SETP 3 Configurar las reglas de autorización para las diferentes solicitudes HTTP
+		// SETP 03 Configurar las reglas de autorización para las diferentes solicitudes HTTP
 		return http
 				.authorizeHttpRequests( authorize ->				
 						authorize
-						// STEP 5 Agregar las reglas de autorización para los endpoints
+						// STEP 05 Agregar las reglas de autorización para los endpoints
 						// Para la url /api/customers/active puede realizarse sin autenticarse
 						.requestMatchers(HttpMethod.GET, "/api/products/active").permitAll()
 						.requestMatchers("/api/products/**").hasRole("CUSTOMER")
@@ -80,16 +80,20 @@ public class WebSecurityConfig {
 						.anyRequest().authenticated() // Todas las solicitud deben estar autenticadas					
 						)  
 				// STEP 14 agregar un filtro que intercepte la autentificación y genere el toke JWT
+				// El filtro se agrega al final del chainFilter. Por lo que se ejecutará después de
+				// todos los demás filtros.
 				.addFilter( jwtAuthenticationFilter  ) 
-				// STEP ? agregar un filtro que lea el token que viene acompañado de la solicitud HTTP
+				// STEP 28 agregar un filtro que lea el token que viene acompañado de la solicitud HTTP
 				//        y verificar si es válido y no está caducado.
+				// Se ejecutará este filtro antes del filtro existente jwtAuthenticationFilter
+				.addFilterBefore( ,  ) // TODO generar filtro
 				
 				.csrf( csrf -> csrf.disable() ) 			                              
 				.httpBasic( withDefaults() ) 
 				.build();		
 	}
 	
-	// SETEP 4 Autenticación en nombre usuario/contraseña almacenada en memoria
+	// SETEP 04 Autenticación en nombre usuario/contraseña almacenada en memoria
 //	@Bean
 //	UserDetailsService userDetailsService() {
 //			UserDetails sergio = User.builder()
@@ -113,7 +117,7 @@ public class WebSecurityConfig {
 //					
 //		}
 	
-	// STEP 6 Leer los usuarios de las base de datos
+	// STEP 06 Leer los usuarios de las base de datos
 	@SuppressWarnings("removal")
 	@Bean
 	AuthenticationManager authManager(HttpSecurity http) throws Exception {
@@ -129,7 +133,7 @@ public class WebSecurityConfig {
 	}
 	
 	/*
-	 *  STEP 7 crear un bean de BCripPasswordEncoder.
+	 *  STEP 07 crear un bean de BCripPasswordEncoder.
 	 *  BCripPasswordEncoder es una implementación de PasswordEncoder proporcionada
 	 *  por Spring Security. Se utiliza para codificar y verificar contraseñas utilizando
 	 *  el algoritmo de hashing bcrypt.
@@ -141,7 +145,7 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-	// STEP 8 obtener una clave encriptada para agregarlo a los usuarios de import.sql
+	// STEP 08 obtener una clave encriptada para agregarlo a los usuarios de import.sql
 //	public static void main(String[] args) {
 //		System.out.println("password: " + new BCryptPasswordEncoder().encode("123") );
 //	}
