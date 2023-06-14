@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.generation.app.entity.Customer;
 import com.generation.app.repository.CustomerRepository;
 
-//STEP 9 Crear la implementación de la interfaz UserDetailsService
+//STEP 09 Crear la implementación de la interfaz UserDetailsService
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 

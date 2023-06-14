@@ -68,7 +68,7 @@ public class WebSecurityConfig {
 		// STEP 14.4 Indicar la url de la solicituid
 		jwtAuthenticationFilter.setFilterProcessesUrl("/login" ); // localhost:8080/login
 		
-		// SETP 03 Configurar las reglas de autorización para las diferentes solicitudes HTTP
+		// STEP 03 Configurar las reglas de autorización para las diferentes solicitudes HTTP
 		return http
 				.authorizeHttpRequests( authorize ->				
 						authorize
@@ -93,7 +93,7 @@ public class WebSecurityConfig {
 				.build();		
 	}
 	
-	// SETEP 04 Autenticación en nombre usuario/contraseña almacenada en memoria
+	// STEP 04 Autenticación en nombre usuario/contraseña almacenada en memoria
 //	@Bean
 //	UserDetailsService userDetailsService() {
 //			UserDetails sergio = User.builder()
