@@ -54,7 +54,10 @@ public class Customer implements CustomerParameters {
 	// columnDefinirtion: definición personalizada para la columna(tipo específico de dato, restricciones)
 	@Column(name = "create_at", insertable = false, updatable = false
 			, columnDefinition = "timestamp default  CURRENT_TIMESTAMP")
-	private Timestamp createAt;	
+	private Timestamp createAt;
+	
+//	@ManyToMany(fetch = FetchType.EAGER )
+//	private List<ROLE> roles;
 	
 }
 

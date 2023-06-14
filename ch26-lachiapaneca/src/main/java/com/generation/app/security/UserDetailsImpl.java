@@ -22,6 +22,8 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		// Por convención los roles se representan como cadenas de texto 
 		// que comienzan con el prefijo ROLE_
@@ -30,6 +32,17 @@ public class UserDetailsImpl implements UserDetails {
 		authorities.add(  new SimpleGrantedAuthority("ROLE_ADMIN") );
 		//authorities.add(  new SimpleGrantedAuthority("ROLE_CUSTOMER") );
 		return authorities;
+		
+		/*       // TODO leer todos los roles del atributo ROLES o
+		         // leer los roles de la tabla role de mi DB
+		  		 List<GrantedAuthority> authorities = new ArrayList<>();
+		  
+		         customer.getRoles().forEach( role->{
+			      authorities.add(new SimpleGrantedAuthority( role.getRoleName() )); 
+		         });
+		         
+		          return authorities;		 
+		 */
 	}
 
 	@Override

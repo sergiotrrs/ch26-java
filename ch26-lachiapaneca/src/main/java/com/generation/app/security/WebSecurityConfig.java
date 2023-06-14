@@ -18,8 +18,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.generation.app.security.jwt.JwtAuthenticationFilter;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import static org.springframework.security.config.Customizer.withDefaults;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 /*
  *  @Configuration indica que una clase es una configuración de Spring.
@@ -36,17 +40,17 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
+//@AllArgsConstructor
 public class WebSecurityConfig {
-	
-	
+		
 	// STEP 13 Inyectar UserDetailsService
-	UserDetailsService userDetailsService;
+	@Autowired
+	UserDetailsService userDetailsService;	
 	
 	// STEP 1 realizar configuraciones personalizadas del filterChain
 	@Bean                                   // STEP 14.3 inyectar AuthenticationManager 
 	SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
-		
+	
 		// STEP 2 probar deshabilitar la seguridad
 /*		return http
 				.authorizeHttpRequests( authorize ->
