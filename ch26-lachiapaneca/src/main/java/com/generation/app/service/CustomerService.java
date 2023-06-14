@@ -19,7 +19,7 @@ public interface CustomerService {
 	 * @param id cliente
 	 * @return datos del cliente
 	 */
-	Customer getCustomerById(long id);
+	CustomerDto getCustomerById(long id);
 	
 	/**
 	 * Buscar un cliente por medio de su id

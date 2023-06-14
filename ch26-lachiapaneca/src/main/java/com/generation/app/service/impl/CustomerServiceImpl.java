@@ -44,9 +44,20 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer getCustomerById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerDto getCustomerById(long id) {
+		Optional<Customer> customerOptional = customerRepository.findById(id);
+		
+		if( customerOptional.isPresent()  ) {
+			Customer customer = customerOptional.get();
+			return CustomerMapper.mapToCustomerDto(customer);
+		}
+		else {
+			throw new IllegalStateException ("Customer does not exist with id: " + id);
+		}
+		
+//		Customer customer = customerRepository.findById(id)
+//				.orElseThrow( ()-> new IllegalStateException ("Customer does not exist with id: " + id));
+//		return CustomerMapper.mapToCustomerDto(customer);
 	}
 
 
