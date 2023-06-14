@@ -87,6 +87,19 @@ class CustomerServiceImplTest {
 		
 	}
 	
+	@Test
+	void getCustomerByIdThenThrowExceptionTest() {
+		long id = 99;
+		
+		Mockito.when( customerRepository.findById(id) ).thenReturn( Optional.empty()  );
+		
+		// Verificar que se lance una excepción
+		Throwable exception = Assertions.assertThrows( IllegalStateException.class , 
+				()->customerService.getCustomerById(id));
+		Assertions.assertEquals("Customer does not exist with id: " + id, exception.getMessage() );
+				
+	}
+	
 	
 
 }
