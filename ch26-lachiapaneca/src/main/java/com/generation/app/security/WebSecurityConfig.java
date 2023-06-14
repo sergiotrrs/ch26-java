@@ -14,16 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.generation.app.security.jwt.JwtAuthenticationFilter;
+import com.generation.app.security.jwt.JwtAuthorizationFilter;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
 import static org.springframework.security.config.Customizer.withDefaults;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 /*
  *  @Configuration indica que una clase es una configuración de Spring.
@@ -40,12 +38,14 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 @EnableWebSecurity
-//@AllArgsConstructor
+@AllArgsConstructor
 public class WebSecurityConfig {
 		
-	// STEP 13 Inyectar UserDetailsService
-	@Autowired
-	UserDetailsService userDetailsService;	
+	// STEP 13 Inyectar UserDetailsService	
+	UserDetailsService userDetailsService;
+	
+	// STEP 32 Inyectar JwtAuthorizationFilter
+	JwtAuthorizationFilter jwtAuthorizationFilter;
 	
 	// STEP 01 realizar configuraciones personalizadas del filterChain
 	@Bean                                   // STEP 14.3 inyectar AuthenticationManager 
@@ -85,8 +85,8 @@ public class WebSecurityConfig {
 				.addFilter( jwtAuthenticationFilter  ) 
 				// STEP 28 agregar un filtro que lea el token que viene acompañado de la solicitud HTTP
 				//        y verificar si es válido y no está caducado.
-				// Se ejecutará este filtro antes del filtro existente jwtAuthenticationFilter
-				.addFilterBefore( ,  ) // TODO generar filtro
+				// Se ejecutará este filtro antes del filtro existente 
+				.addFilterBefore( jwtAuthorizationFilter , UsernamePasswordAuthenticationFilter.class ) 
 				
 				.csrf( csrf -> csrf.disable() ) 			                              
 				.httpBasic( withDefaults() ) 

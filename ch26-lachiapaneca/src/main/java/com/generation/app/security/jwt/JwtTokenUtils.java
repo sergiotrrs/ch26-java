@@ -83,7 +83,7 @@ public class JwtTokenUtils {
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
-		for ( Map<String, String> authorityMap : authoritiesList    ) {
+		for ( Map<String, String> authorityMap : authoritiesList ) {
 			String authority = authorityMap.get( "authority" ); // Obtener la autorización / Rol.
 			authorities.add( new SimpleGrantedAuthority(authority) ); // Agregar el rol 			
 		}
@@ -99,12 +99,6 @@ public class JwtTokenUtils {
 	    	return null;
 	    }
 	    
-	    
-	    
-	    
-		
-	    
-		return null;
 	}
 	
 	

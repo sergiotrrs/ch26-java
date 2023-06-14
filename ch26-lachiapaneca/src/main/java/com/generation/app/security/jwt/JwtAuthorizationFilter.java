@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import jakarta.servlet.FilterChain;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 // STEP 29 Creamos la clase para leer el token que acompaña a la solicitud HTTP
+@Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter  {
 
 	@Override
@@ -26,7 +28,10 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter  {
 		
 		if ( bearerToken != null && bearerToken.startsWith("Bearer ") ) {
 			String token = bearerToken.replace("Bearer ", ""); // Obtenemos el JWT
-			UsernamePasswordAuthenticationToken usernamePAT = null; // TODO verificar la validez del token
+			
+			// verificar la validez del token
+			UsernamePasswordAuthenticationToken usernamePAT = JwtTokenUtils.getAuthentication(token); 
+						
 			// Establecemos la autenticación en el contexto de seguridad de Spring Security
 			// En el SecurityContex es donde se alamcena la información de la autenticación
 			// y autorización durante la ejecución de la solicitud.
