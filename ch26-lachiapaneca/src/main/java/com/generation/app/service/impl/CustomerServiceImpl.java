@@ -45,19 +45,24 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDto getCustomerById(long id) {
-		Optional<Customer> customerOptional = customerRepository.findById(id);
+		// 1era Versión
+//		Optional<Customer> customerOptional = customerRepository.findById(id);
+//		
+//		if( customerOptional.isPresent()  ) {
+//			Customer customer = customerOptional.get();
+//			return CustomerMapper.mapToCustomerDto(customer);
+//		}
+//		else {
+//			throw new IllegalStateException ("Customer does not exist with id: " + id);
+//		}
 		
-		if( customerOptional.isPresent()  ) {
-			Customer customer = customerOptional.get();
-			return CustomerMapper.mapToCustomerDto(customer);
-		}
-		else {
-			throw new IllegalStateException ("Customer does not exist with id: " + id);
-		}
-		
+		// 2a versión
 //		Customer customer = customerRepository.findById(id)
 //				.orElseThrow( ()-> new IllegalStateException ("Customer does not exist with id: " + id));
 //		return CustomerMapper.mapToCustomerDto(customer);
+		
+		// 3era versión		
+		return CustomerMapper.mapToCustomerDto( findCustomerById(id) );
 	}
 
 
@@ -115,7 +120,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer findCustomerById(long id) {
 		Customer existingCustomer = customerRepository.findById(id)
-				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );				
+				.orElseThrow( ()-> new IllegalStateException("Customer does not exist with id: " + id) );				
 		return existingCustomer;
 	}
 
